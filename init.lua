@@ -189,6 +189,12 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -820,7 +826,14 @@ require('lazy').setup({
       vim.keymap.set({ 'n', 'v' }, '<leader>xe', require('nvim-emmet').wrap_with_abbreviation)
     end,
   },
-  { 'akinsho/toggleterm.nvim', version = '*', config = true },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = function()
+      require('toggleterm').setup()
+      vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', { silent = true })
+    end,
+  },
   {
     'numToStr/Comment.nvim',
     opts = {
@@ -828,6 +841,16 @@ require('lazy').setup({
     },
     lazy = false,
   },
+  { 'folke/neodev.nvim', opts = {} },
+  {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require('nvim-tree').setup()
+      vim.keymap.set('n', '<leader>ft', ':NvimTreeToggle<CR>', { silent = true })
+    end,
+  },
+  -- empty setup using defaults
+
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
