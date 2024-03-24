@@ -737,7 +737,8 @@ require('lazy').setup({
   {
     'projekt0n/github-nvim-theme',
     init = function()
-      vim.cmd.colorscheme 'github_dark'
+      vim.cmd.colorscheme 'github_light'
+
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
     end,
