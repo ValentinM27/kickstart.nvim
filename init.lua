@@ -820,12 +820,7 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
-  {
-    'olrtg/nvim-emmet',
-    config = function()
-      vim.keymap.set({ 'n', 'v' }, '<leader>xe', require('nvim-emmet').wrap_with_abbreviation)
-    end,
-  },
+  { 'olrtg/nvim-emmet' },
   {
     'akinsho/toggleterm.nvim',
     version = '*',
@@ -847,6 +842,12 @@ require('lazy').setup({
     config = function()
       require('nvim-tree').setup()
       vim.keymap.set('n', '<leader>ft', ':NvimTreeToggle<CR>', { silent = true })
+    end,
+  },
+  {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
     end,
   },
   -- empty setup using defaults
