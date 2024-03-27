@@ -850,6 +850,7 @@ require('lazy').setup({
       require('nvim-ts-autotag').setup()
     end,
   },
+  { 'tpope/vim-fugitive' },
   -- empty setup using defaults
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
